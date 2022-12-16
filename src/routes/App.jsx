@@ -18,8 +18,8 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage/>}/>
       <Route path="/contacto" element={<ContactPage/>}/>
-      <Route path="/blog" element={<PedidoPage/>}/>
-      <Route path="/blog/:id" element={<PedidoDetalle/>}/> 
+      <Route path="/pedido" element={<PedidoPage/>}/>
+      <Route path="/pedido/:id" element={<PedidoDetalle/>}/> 
       <Route path="*" element={<NotFound/>}/>
     </Routes>
     </HashRouter>

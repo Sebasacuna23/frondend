@@ -11,6 +11,8 @@ useEffect( () =>{
 
     return(
         <div>
+            <h1>Página de contacto </h1>
+            <p>Bienvenidos a su papeleria</p>
             <p>You clicked {count} times</p>
             <button onClick={()=> SetCount(count +1)}>
                 Click me

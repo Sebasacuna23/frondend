@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 function MenuNav() {
@@ -9,18 +9,18 @@ function MenuNav() {
 
 
     return(
-        <Nav className="justify-content-end" activeKey="/home">
+        <Nav className="justify-content-end" activeKey="/">
         <Nav.Item>
-          <Nav.Link href="/home">Active</Nav.Link>
+          <NavLink className="nav-link" to="/">Inicio</NavLink>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
+          <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">Link</Nav.Link>
+          <NavLink className="nav-link" to="/pedido">Pedidos</NavLink>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
+          <Nav.Link >
             Disabled
           </Nav.Link>
         </Nav.Item>
