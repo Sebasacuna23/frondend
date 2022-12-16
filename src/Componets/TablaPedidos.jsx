@@ -1,31 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Form, FormControl, FormLabel, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { eliminarPedidoPorId, listaPedidos } from "../server/Server";
 
 function TablaPedidos() {
 
     const [pedidos,setPedidos] = useState([]);
 
     async function cargarPedidos(){
-        const options = {method: 'GET'};
-
-    fetch('http://localhost:8080/pedidos', options)
-        .then(response => response.json())
-        .then(response => setPedidos(response))
-        .catch(err => console.error(err));
+        try {
+            const res = await listaPedidos();
+            setPedidos(res);
+        } catch (error) {
+            console.log(error);
+            
+        }
+        
     };
     useEffect(()=>{
         cargarPedidos();
     },[])
+
+    async function deletePedidoPorId(id){
+        let result =window.confirm("Seguro de eliminar");
+        if(result){
+            const response= await eliminarPedidoPorId(id);
+            alert(response)
+            setPedidos(pedidos.filter(pedido =>pedido.id !==  id));
+
+        }
+    }
     
     let  contador=0;
 
   
     return(
         <Container>
-            <Row>
+           <Row className="my-3">
                 <Col><h2>Lista de Pedidos</h2></Col>
-
+                <Col xs={6}></Col>
+                <Col>
+                <Link to="/pedido/form">
+                <Button variant="success">Registrar</Button> 
+                </Link> 
+                </Col>
             </Row>
             <Table striped bordered hover>
                 <thead>
@@ -47,7 +65,7 @@ function TablaPedidos() {
                              <td>{pedido.fecha_despacho}</td>
                              <td>{pedido.id_cliente}</td>
                              <td><Link>Ver Detalle</Link></td>
-                             <td><Button variant="danger">Eliminar</Button></td>
+                             <td><Button  variant="danger" onClick={()=>deletePedidoPorId(pedido.id)}>Eliminar</Button></td>
                             </tr>
                         ))
                     }
