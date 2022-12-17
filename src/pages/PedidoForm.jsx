@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { guardarPedido } from "../server/Server";
+import { useNavigate, useParams } from "react-router-dom";
+import { findAllClientes, findPedidoById, guardarPedido } from "../server/Server";
 
 function PedidoForm() {
+    const{id} =useParams();
+
     const navigate= useNavigate();
+
     function returnToPedido() {
         navigate("/pedido")
     };
@@ -17,6 +20,29 @@ function PedidoForm() {
         }
     );
 
+    const [clientes, setClientes] = useState([]);
+
+    async function listaClientes(){
+        try {
+            const response = await findAllClientes();
+            setClientes(response);
+            console.log(clientes)
+            
+        } catch (error) {            
+        }  
+    };
+
+    useEffect(()=>{
+        if (id!==undefined) {
+            setDisabled(true)
+            findPedidoById(id).then(
+                res=>{setPedido(res)}
+            )
+            
+        }
+        listaClientes();
+    },[id]);
+
     function handleChange({target}) {
         setPedido({
             ...pedido,
@@ -27,16 +53,24 @@ function PedidoForm() {
     }
 
     async function handleSubmit(e) {
-        e.preventDefault();
-        console.log(pedido);
-       const resp=await guardarPedido(pedido);
-       alert("Se creo el pedido:"+resp.id);
-       returnToPedido();
-        
+        e.preventDefault(); 
+        const resp=await guardarPedido(pedido);
+        if (id!==undefined) {
+        alert("Se actualizo el pedido:"+resp.id);
+    }else{
+         alert("Se creo el pedido:"+resp.id);
     }
+        returnToPedido();
+        
+    };
+
+    const [disabled,setDisabled] = useState(false);
+
+    
+
     return(
         <Container>
-        <h1>Registrar Pedido</h1>
+        <h1> {id!==undefined?"Detalle Pedido":"Registrar Pedido"}</h1>
         <Form className="my-3" onSubmit={handleSubmit}>
             <Row>
                 <Col xs="auto" className="my-1">
@@ -46,6 +80,9 @@ function PedidoForm() {
                     placeholder="aaaa-mm-dd"
                     name="fecha_despacho"
                     onChange={handleChange}
+
+                    value={pedido.fecha_despacho}
+                    disabled ={disabled}
                 />
                 </Col>
                 <Col xs="auto" className="my-1">
@@ -53,17 +90,27 @@ function PedidoForm() {
                     <Form.Select
                         required
                         name="id_cliente"
-                        onChange={handleChange}>
-                        <option></option>    
-                        <option value="6390e078c33f9d0a034fded5">Juan</option>
-                        <option value="6390e078c33f9d0a034fded5">Manuela</option>
+                        onChange={handleChange}
+                        disabled ={disabled} 
+                        >
+    
+                        <option>{pedido.nombrecliente}</option>
+                        {
+                            clientes.map((cliente)=>(
+                                <option key={cliente.id} value={cliente.id}>{cliente.nombre} {cliente.apellido}</option>
+
+                            ))
+                        }   
                        
                     </Form.Select>
                 </Col>
             </Row>
                 <Row>
                     <Col>
-                        <Button variant="success" type="submit">Guardar</Button>
+                        <Button disabled ={disabled} variant="success" type="submit">{id!==undefined?"Actualizar":"Guardar"}</Button>
+                    </Col>
+                    <Col>
+                    <Button hidden={!disabled} variant="warning" onClick={()=>setDisabled(!disabled)}>Editar</Button>
                     </Col>
                     <Col>
                     <Button onClick={returnToPedido}>Regresar</Button>

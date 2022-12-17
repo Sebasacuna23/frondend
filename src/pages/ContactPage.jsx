@@ -2,23 +2,16 @@ import React, { useEffect, useState } from "react";
 
 
 function ContactPage () {
-
-    const [count,SetCount] = useState(0);
-useEffect( () =>{
-
-    document.title = `You clicked ${count} times`;
-});
-
-    return(
+    return (
         <div>
             <h1>Página de contacto </h1>
             <p>Bienvenidos a su papeleria</p>
-            <p>You clicked {count} times</p>
-            <button onClick={()=> SetCount(count +1)}>
-                Click me
-            </button>
+            <p>Si quiere hacer un pedido comuniquese al celular 3002302121</p>
+            <p>O escriba un correo a la siguiente dirección papeleria@gmail.com</p>
+            
         </div>
-      
-    );
+    )
+
     
 }export{ContactPage}
+    

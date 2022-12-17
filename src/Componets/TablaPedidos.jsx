@@ -64,7 +64,7 @@ function TablaPedidos() {
                              <td>{pedido.id}</td>
                              <td>{pedido.fecha_despacho}</td>
                              <td>{pedido.id_cliente}</td>
-                             <td><Link>Ver Detalle</Link></td>
+                             <td><Link to={`/pedido/${pedido.id}`}>Ver Detalle</Link></td>
                              <td><Button  variant="danger" onClick={()=>deletePedidoPorId(pedido.id)}>Eliminar</Button></td>
                             </tr>
                         ))

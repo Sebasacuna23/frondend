@@ -22,3 +22,13 @@ export async function eliminarPedidoPorId(id) {
     const res= await fetch(BASE_URL+"pedidos/"+id, options);
     return await res.text();
 };
+
+export async function findAllClientes() {
+    const res= await fetch(BASE_URL+"admin")
+    return await res.json();
+};
+
+export async function findPedidoById(id) {
+    const res= await fetch(BASE_URL+"pedidos/"+ id);
+    return await res.json();
+};
