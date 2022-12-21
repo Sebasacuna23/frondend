@@ -20,9 +20,7 @@ function MenuNav() {
           <NavLink className="nav-link" to="/pedido">Pedidos</NavLink>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link >
-            Disabled
-          </Nav.Link>
+          <NavLink className="nav-link" to="/agenda-pedidos">Agendar su pedido</NavLink>
         </Nav.Item>
       </Nav>
     )
