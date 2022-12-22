@@ -17,6 +17,9 @@ function MenuNav() {
           <NavLink className="nav-link" to="/contacto">Contacto</NavLink>
         </Nav.Item>
         <Nav.Item>
+          <NavLink className="nav-link" to="/productos">Productos</NavLink>
+        </Nav.Item>
+        <Nav.Item>
           <NavLink className="nav-link" to="/pedido">Pedidos</NavLink>
         </Nav.Item>
         <Nav.Item>
