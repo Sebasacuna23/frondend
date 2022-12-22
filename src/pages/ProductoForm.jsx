@@ -44,9 +44,9 @@ function ProductoForm() {
         e.preventDefault(); 
         const resp=await saveProducto(producto);
         if (id!==undefined) {
-        alert("Se actualizo el producto: "+resp.id);
+        alert("Se actualizó el producto: "+resp.id);
     }else{
-         alert("Se creo el producto: "+resp.id);
+         alert("Se creó el producto: "+resp.id);
     }
         returnToProductos();
         
@@ -58,32 +58,37 @@ function ProductoForm() {
         <Container>
             <hr />
             <h1> {id!==undefined?"Detalle producto":"Registrar Producto"}</h1>
-            <Form className="my-3" onSubmit={handleSubmit}>
+            <br />
+            <Form onSubmit={handleSubmit}>
                 <Row>
-                    <Col xs="auto" className="my-1">
+                    <Form.Group as={Col} xs={3} controlId="formGridEmail">
                         <Form.Label>Nombre:</Form.Label>
                         <Form.Control
-                        required
-                        placeholder="nombre"
-                        name="nombre"
-                        onChange={handleChange}
+                            required
+                            placeholder="ingrese el nombre del producto"
+                            name="nombre"
+                            onChange={handleChange}
 
-                        value={producto.nombre}
-                        disabled ={disabled}/>
-                    </Col>
-                    <Col xs="auto" className="my-1">
+                            value={producto.nombre}
+                            disabled={disabled} />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Descripcion:</Form.Label>
                         <Form.Control
-                        required
-                        placeholder="descripcion"
-                        name="descripcion"
-                        onChange={handleChange}
+                            required
+                            placeholder="descripcion"
+                            name="descripcion"
+                            onChange={handleChange}
 
-                        value={producto.descripcion}
-                        disabled ={disabled}/>
-                    </Col>
-                    <Col xs="auto" className="my-1">
-                        <Form.Label>precio:</Form.Label>
+                            value={producto.descripcion}
+                            disabled={disabled} />
+                    </Form.Group>
+                </Row>
+                <br />
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Label>precio:</Form.Label>
                         <Form.Control
                         required
                         placeholder="precio"
@@ -92,8 +97,8 @@ function ProductoForm() {
 
                         value={producto.precio}
                         disabled ={disabled}/>
-                    </Col>
-                    <Col xs="auto" className="my-1">
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>stock:</Form.Label>
                         <Form.Control
                         required
@@ -103,22 +108,19 @@ function ProductoForm() {
 
                         value={producto.stock}
                         disabled ={disabled}/>
-                    </Col>  
-
+                    </Form.Group>
                 </Row>
                 <Row>
                     <Col>
-                        <Button disabled ={disabled} variant="success" type="submit">{id!==undefined?"Actualizar":"Guardar"}</Button>
+                        <Button disabled ={disabled} variant="primary" type="submit">{id!==undefined?"Actualizar":"Guardar"}</Button>
                     </Col>
                     <Col>
                         <Button hidden={!disabled} variant="warning" onClick={()=>setDisabled(!disabled)}>Editar</Button>
                     </Col>
                     <Col>
-                        <Button onClick={returnToProductos}>Regresar</Button>
+                        <Button variant="link" onClick={returnToProductos}>Regresar</Button>
                     </Col>
                 </Row>
-
-                
             </Form>
         </Container>        
     )

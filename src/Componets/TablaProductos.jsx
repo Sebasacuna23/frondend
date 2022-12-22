@@ -54,6 +54,7 @@ function TablaProductos() {
                         <th>nombre</th>
                         <th>descripcion</th>
                         <th>precio</th>
+                        <th>ver detalle</th>
                         <th>stock</th>
                     </tr>
                 </thead>
@@ -65,6 +66,7 @@ function TablaProductos() {
                              <td>{producto.id}</td>
                              <td>{producto.nombre}</td>
                              <td>{producto.descripcion}</td>
+                             <td>${producto.precio.toLocaleString("es-MX")}</td>
                              <td><Link to={`/producto/${producto.id}`}>Ver Detalle</Link></td>
                              <td><Button  variant="danger" onClick={()=>deleteProductoPorId(producto.id)}>Eliminar</Button></td>
                             </tr>
