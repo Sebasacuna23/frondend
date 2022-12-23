@@ -56,7 +56,7 @@ function AgregarProductosPedidoPage() {
 
     return (
         <Container className="my-3">
-            <h1>siuuuuu!!!!</h1>
+            <h1>Agregue al pedido</h1>
             <Row>
                 <Col>
                     {/* <p>Fecha Pedido: </p> */}
