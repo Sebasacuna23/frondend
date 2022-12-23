@@ -38,7 +38,7 @@ function CardProducto() {
                          <br />
                          precio unidad: <b>$ {producto.precio.toLocaleString('es-MX')}</b>
                         </Card.Text>
-                        <Link to={`/pedidos/citas/${producto.id}`}>Agregar al pedido    </Link>
+                        {/* <Link to={`/pedidos/citas/${producto.id}`}>Agregar al pedido    </Link> */}
                         </Card.Body>
                     </Card>
                     </Col>
