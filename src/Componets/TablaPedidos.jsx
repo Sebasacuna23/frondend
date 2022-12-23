@@ -40,9 +40,9 @@ function TablaPedidos() {
                 <Col><h2>Lista de Pedidos</h2></Col>
                 <Col xs={6}></Col>
                 <Col>
-                <Link to="/pedido/form">
-                <Button variant="success">Registrar</Button> 
-                </Link> 
+                    <Link to="/pedido/form">
+                        <Button variant="success">Registrar</Button>
+                    </Link>
                 </Col>
             </Row>
             <Table striped bordered hover>
@@ -50,8 +50,8 @@ function TablaPedidos() {
                     <tr>
                          <th>#pedidos</th>
                         <th>Id Pedido</th>
-                        <th>Fecha_despacho</th>
-                        <th>Id cliente</th>
+                        {/* <th>Fecha_despacho</th> */}
+                        <th>cliente</th>
                         <th>Ver detalle</th>
                         <th>Eliminar</th>
                     </tr>
@@ -62,7 +62,7 @@ function TablaPedidos() {
                             <tr key={pedido.id}>
                              <td>{++contador}</td>
                              <td>{pedido.id}</td>
-                             <td>{pedido.fecha_despacho}</td>
+                             {/* <td>{pedido.fecha_despacho}</td> */}
                              <td>{pedido.id_cliente}</td>
                              <td><Link to={`/pedido/${pedido.id}`}>Ver Detalle</Link></td>
                              <td><Button  variant="danger" onClick={()=>deletePedidoPorId(pedido.id)}>Eliminar</Button></td>

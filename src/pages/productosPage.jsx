@@ -10,12 +10,16 @@ function ProductosPage() {
         <Container>
             <hr />
              <Row className="my-3">
-                <Col><h1>Nuestros productos</h1></Col>
-                <Col xxl={3}></Col>
+                <Col xs={4}><h1>Nuestros productos</h1></Col>
                 <Col>
                     <Link to="/productos/admin">
-                        administrar productos
+                    <Button variant="success">administrar productos</Button>                       
                     </Link> 
+                </Col>
+                <Col>
+                    <Link to="/pedido/crear">
+                        <Button variant="primary">Gestionar un pedido</Button>
+                    </Link>
                 </Col>
             </Row>
                         

@@ -89,7 +89,7 @@ function PedidoForm() {
                     <Form.Label>Cliente:</Form.Label>
                     <Form.Select
                         required
-                        name="id_cliente"
+                        name="nombrecliente"
                         onChange={handleChange}
                         disabled ={disabled} 
                         >
