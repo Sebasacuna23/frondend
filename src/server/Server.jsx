@@ -1,4 +1,4 @@
-const BASE_URL="http://localhost:8080/"
+const BASE_URL="http://129.213.28.107:8080/"
 
 export async function listaPedidos() {
     const options ={method:'GET'};
