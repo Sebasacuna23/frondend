@@ -1,6 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom"
 import { MenuNav } from "../Componets/MenuNav"
 import { AdminProductosPage } from "../pages/AdminProductosPage"
+import { AgregarProductosPedidoPage } from "../pages/AgregarProductosPedidoPage"
 import { CitasPedidoPage } from "../pages/CitasPedidoPage"
 import { ContactPage } from "../pages/ContactPage"
 import { HomePage } from "../pages/HomePage"
@@ -8,6 +9,7 @@ import { NotFound } from "../pages/NotFound"
 import { PedidoCitasPage } from "../pages/PedidoCitasPage"
 import { PedidoForm } from "../pages/PedidoForm"
 import { PedidoPage } from "../pages/PedidoPage"
+import { PedidoProductosForm } from "../pages/PedidoProductosForm"
 import { ProductoForm } from "../pages/ProductoForm"
 import { ProductosPage } from "../pages/productosPage"
 
@@ -32,6 +34,8 @@ function App() {
       <Route path="/productos/admin" element={<AdminProductosPage/>}/>
       <Route path="/producto/form" element={<ProductoForm/>}/>
       <Route path="/producto/:id" element={<ProductoForm/>}/> 
+      <Route path="/pedido/crear" element={<PedidoProductosForm/>}/> 
+      <Route path="/pedido/agregar/:id" element={<AgregarProductosPedidoPage/>}/> 
       <Route path="*" element={<NotFound/>}/>
     </Routes>
     </HashRouter>

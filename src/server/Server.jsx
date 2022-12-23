@@ -24,7 +24,7 @@ export async function eliminarPedidoPorId(id) {
 };
 
 export async function findAllClientes() {
-    const res= await fetch(BASE_URL+"admin")
+    const res= await fetch(BASE_URL+"clientes")
     return await res.json();
 };
 

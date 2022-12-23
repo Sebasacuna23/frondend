@@ -31,20 +31,18 @@ function CardsPedido() {
     return(
         <Row className="my-3">
             {
-                pedidos.filter(pedido=>pedido.fecha_despacho>fechaActual.toISOString()).map((pedido)=>(
+                pedidos.map((pedido)=>(
                     <Col key={pedido.id}>
-                    <Card style={{ width: '18rem' }}
-                    className="mb-2"
-                    >
-                    <Card.Body>
-                        <Card.Title>{pedido.fecha_despacho}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Disponibilidad de pedido</Card.Subtitle>
-                        <Card.Text>
-                         Some quick example text to build on the card title and make up the
-                         bulk of the card's content.
-                        </Card.Text>
-                        <Link to={`/pedidos/citas/${pedido.id}`}>Programar pedido</Link>
-                        </Card.Body>
+                    <Card style={{ width: '18rem' }} className="mb-2">
+                            <Card.Body>
+                                <Card.Title>Id: {pedido.id}</Card.Title>
+                                {/* <Card.Title>Id: {pedido.id.substring(0, 15)}</Card.Title> */}
+                                <Card.Subtitle className="mb-2 text-muted">Cliente: {pedido.id_cliente}</Card.Subtitle>
+                                <Card.Text>
+                                    fecha pedido: <b>{pedido.fecha_pedido}</b>
+                                </Card.Text>
+                                <Link to={`/pedido/agregar/${pedido.id}`}>Programar pedido</Link>
+                            </Card.Body>
                     </Card>
                     </Col>
 
